@@ -40,7 +40,7 @@ Bidding_System_BE/
 ├── scripts/                  # Chứa các script chạy độc lập: khởi tạo DB, test AI (Llama, Deepseek), import dữ liệu
 ├── main.py                   # Điểm neo khởi chạy ứng dụng (Entry point)
 └── requirements.txt          # Danh sách thư viện phụ thuộc
-
+```
 ##✨ Các tính năng chính (Key Features)
 1. Quản lý Đấu thầu (Bidding Management)
 - Quản lý toàn bộ vòng đời của một dự án đấu thầu: Project -> Package -> Requirement -> Task -> Result.
