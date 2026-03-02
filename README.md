@@ -17,6 +17,7 @@ Dự án Bidding System Backend là một hệ thống quản lý đấu thầu 
 
 Dự án được tổ chức theo mô hình Domain-Driven Design (DDD) kết hợp với Modular, phân chia rõ ràng trách nhiệm của từng thành phần:
 
+```text
 Bidding_System_BE/
 ├── app/
 │   ├── core/                 # Cấu hình cốt lõi: Logging, Security, Base Models và logic Phân quyền (RBAC/ABAC)
