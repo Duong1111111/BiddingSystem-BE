@@ -125,3 +125,11 @@ Hệ thống hỗ trợ lưu trữ file từ nhiều nguồn khác nhau:
 ### 6. Cách đăng nhập
 - User đăng nhập hoàn toàn bằng **Email** thay vì Username truyền thống (logic trong `app/modules/auth/`).
 - Có tích hợp đăng nhập thẳng bằng Microsoft (`auth/router.py`).
+
+### 7. Quy trình luồng dữ liệu Đấu Thầu (Bidding Flow)
+Hệ thống quản lý thầu theo cấu trúc phân tầng nghiêm ngặt (Cascading). Dev cần nắm rõ luồng này khi thao tác với Database hoặc viết API:
+1. **Project (Dự án):** Cấp cao nhất. Một dự án thầu có thể chứa nhiều gói thầu.
+2. **Package (Gói thầu):** Trực thuộc Project. Đây là đối tượng chính để thực hiện đấu thầu.
+3. **Requirement (Yêu cầu/Tiêu chí):** Bóc tách từ Package (thường do AI `bid_analysis` tự động bóc tách từ hồ sơ mời thầu dạng PDF).
+4. **Task (Công việc):** Các đầu việc được giao cho nhân sự/phòng ban để đáp ứng các Requirement trên (ví dụ: Task làm báo giá, Task làm hồ sơ năng lực).
+5. **Result (Kết quả):** Sản phẩm đầu ra của các Task (File tài liệu, nội dung sinh ra từ AI).
