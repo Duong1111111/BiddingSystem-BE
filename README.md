@@ -133,3 +133,36 @@ Hệ thống quản lý thầu theo cấu trúc phân tầng nghiêm ngặt (Cas
 3. **Requirement (Yêu cầu/Tiêu chí):** Bóc tách từ Package (thường do AI `bid_analysis` tự động bóc tách từ hồ sơ mời thầu dạng PDF).
 4. **Task (Công việc):** Các đầu việc được giao cho nhân sự/phòng ban để đáp ứng các Requirement trên (ví dụ: Task làm báo giá, Task làm hồ sơ năng lực).
 5. **Result (Kết quả):** Sản phẩm đầu ra của các Task (File tài liệu, nội dung sinh ra từ AI).
+
+### 8. Tiêu chuẩn Code chung (Code Conventions & Core Utils)
+- **Base Model (`app/core/utils/base_model.py`):** Mọi bảng trong Database (SQLAlchemy model) đều **phải kế thừa** từ Base Model này. Nó đã cấu hình sẵn các trường mặc định như `id` (UUID), `created_at`, `updated_at`, `is_deleted` (cho cơ chế Soft Delete). Không tự ý viết lại các trường này ở các model con.
+- **Enum (`app/core/utils/enum.py`):** Toàn bộ các trạng thái (Status), loại (Type) của hệ thống (ví dụ: Trạng thái duyệt thầu, Vai trò người dùng) đều được định nghĩa tập trung tại đây. Tuyệt đối không hard-code string/integer phân loại rải rác trong logic.
+
+### 9. Các Scripts Hỗ trợ Dev/Admin (`scripts/feature/`)
+Ngoài việc chạy server chính, dự án cung cấp các script độc lập để xử lý các tác vụ nền hoặc setup ban đầu:
+- **`init_db.py` & `check_db.py`:** Dùng để tạo schema cơ sở dữ liệu và kiểm tra kết nối SQL Server trong lần chạy đầu tiên.
+- **`import_template.py`:** Script dùng để import các biểu mẫu, template chuẩn của công ty vào hệ thống (thường chạy 1 lần khi deploy).
+- **`run_ingest_md.py`:** Script chạy tay để đưa dữ liệu dạng Markdown (đã parse) vào VectorDB (ChromaDB) để test luồng RAG.
+
+### 10. Mẫu biến môi trường (.env template)
+Tạo file `.env` ở thư mục gốc với các trường sau (thay thế bằng API Key thật của bạn):
+
+```env
+# Database
+DATABASE_URL=mssql+pyodbc://user:password@server/db_name?driver=ODBC+Driver+17+for+SQL+Server
+
+# Storage (MinIO)
+MINIO_ENDPOINT=localhost:9000
+MINIO_ACCESS_KEY=your_access_key
+MINIO_SECRET_KEY=your_secret_key
+MINIO_BUCKET_NAME=bidding-files
+
+# AI Providers
+OPENAI_API_KEY=sk-...
+GEMINI_API_KEY=AIza...
+# Cấu hình Llama / Deepseek nếu có dùng local hoặc API khác
+
+# Auth (JWT)
+SECRET_KEY=your_jwt_secret_key
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=1440
