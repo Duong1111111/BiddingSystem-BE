@@ -43,7 +43,7 @@ Bidding_System_BE/
 ```
 ##✨ Các tính năng chính (Key Features)
 1. Quản lý Đấu thầu (Bidding Management)
-- Quản lý toàn bộ vòng đời của một dự án đấu thầu: Project -> Package -> Requirement -> Task -> Result.
+- Quản lý toàn bộ vòng đời của một dự án đấu thầu: Package -> Requirement -> Project ->  Task -> Result.
 - Theo dõi tiến độ công việc, phân công nhiệm vụ làm hồ sơ thầu.
 
 2. Tích hợp AI & Xử lý tài liệu (AI & Document Processing)
@@ -57,7 +57,7 @@ Bidding_System_BE/
 
 4. Xác thực Người dùng (Authentication)
 - Hệ thống đăng nhập được thiết kế chặt chẽ, sử dụng Email để định danh người dùng thay vì Username.
-- Hỗ trợ đăng nhập qua hệ thống thứ 3 (Google Login).
+- Hỗ trợ đăng nhập qua hệ thống thứ 3 (Microsoft/Google Login).
 
 5. Quản lý Lưu trữ Đồng bộ
 - Đồng bộ và quản lý file linh hoạt thông qua MinIO (Self-hosted) hoặc các dịch vụ đám mây (Microsoft OneDrive, Google Drive).
@@ -128,9 +128,9 @@ Hệ thống hỗ trợ lưu trữ file từ nhiều nguồn khác nhau:
 
 ### 7. Quy trình luồng dữ liệu Đấu Thầu (Bidding Flow)
 Hệ thống quản lý thầu theo cấu trúc phân tầng nghiêm ngặt (Cascading). Dev cần nắm rõ luồng này khi thao tác với Database hoặc viết API:
-1. **Project (Dự án):** Cấp cao nhất. Một dự án thầu có thể chứa nhiều gói thầu.
-2. **Package (Gói thầu):** Trực thuộc Project. Đây là đối tượng chính để thực hiện đấu thầu.
-3. **Requirement (Yêu cầu/Tiêu chí):** Bóc tách từ Package (thường do AI `bid_analysis` tự động bóc tách từ hồ sơ mời thầu dạng PDF).
+1. **Package (Gói thầu):** Trực thuộc Project. Đây là đối tượng chính để thực hiện đấu thầu.
+2. **Requirement (Yêu cầu/Tiêu chí):** Bóc tách từ Package (thường do AI `bid_analysis` tự động bóc tách từ hồ sơ mời thầu dạng PDF).
+3. **Project (Dự án):** Cấp cao nhất. Một dự án thầu có thể chứa nhiều gói thầu.
 4. **Task (Công việc):** Các đầu việc được giao cho nhân sự/phòng ban để đáp ứng các Requirement trên (ví dụ: Task làm báo giá, Task làm hồ sơ năng lực).
 5. **Result (Kết quả):** Sản phẩm đầu ra của các Task (File tài liệu, nội dung sinh ra từ AI).
 
