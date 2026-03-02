@@ -41,7 +41,7 @@ Bidding_System_BE/
 ├── main.py                   # Điểm neo khởi chạy ứng dụng (Entry point)
 └── requirements.txt          # Danh sách thư viện phụ thuộc
 ```
-#✨ Các tính năng chính (Key Features)
+✨ Các tính năng chính (Key Features)
 1. Quản lý Đấu thầu (Bidding Management)
 - Quản lý toàn bộ vòng đời của một dự án đấu thầu: Package -> Requirement -> Project ->  Task -> Result.
 - Theo dõi tiến độ công việc, phân công nhiệm vụ làm hồ sơ thầu.
@@ -65,7 +65,7 @@ Bidding_System_BE/
 6. Cào dữ liệu tự động (Web Crawler)
 - Tích hợp Crawler Bot sử dụng trình duyệt Edge (msedgedriver) để tự động thu thập kết quả, thông tin gói thầu từ các trang mạng đấu thầu.
 
-#🛠 Hướng dẫn Cài đặt & Khởi chạy
+🛠 Hướng dẫn Cài đặt & Khởi chạy
 **Yêu cầu hệ thống:**
 - Python 3.10+
 - SQL Server đang hoạt động.
